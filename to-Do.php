@@ -1,9 +1,9 @@
 <?php
-session_start();
+session_start(); //session started
 
 
 global $title; // Try to avoid globals, as they are harder to troubleshoot and track through your application.
-$title = 'PHP To Dos List'; // $GLOBALS['title'] = 'PHP Homepage';
+$title = 'PHP To Dos List'; // Alternate: $GLOBALS['title'] = 'PHP To Dos List';
 include 'templates/header.php';
 ?>
 
@@ -13,24 +13,25 @@ include 'templates/header.php';
 
   $warnings ="";
 
-  if(isset($_POST['newtask']) && !empty($_POST['newtask'])) {
+  if(isset($_POST['newtask']) && !empty($_POST['newtask'])) {  //check if input field has value and not empty
       $newtask=$_POST['newtask'];
   }
   else {
-    $warning ="Please enter a task";
+    $warning ="Please enter a task"; //Display error if nothing entered by user
   }
-
+  
   if ( isset( $newtask ) ) {
-    // If we want to push to an array... it needs to be an array! Let's make sure it is the proper data-type if it isn't already defined.
+    // Push values to an array... 
     if ( !isset( $_SESSION['todo-active'] ) || empty( $_SESSION['todo-active'] ) ) {
       $_SESSION['todo-active'] = array();
     }
-    array_push( // Add this result to the 'calc-history' session array.
+    array_push( // Add this result to the 'toDo-active' session array.
       $_SESSION['todo-active'],
       "$newtask"
     );
   }
 
+  
   ?>
 
   

@@ -4,10 +4,19 @@
 session_start();
 //session_unset();
 
-function showToDoComplete() {
-
-    if(isset($_POST['chktask'])) {
-  $chktask=$_POST['chktask'];
-  echo  $chktask;
-}   
+function showToDoComplete () {
+if ( isset( $_SESSION['todo-complete'] ) && !empty( $_SESSION['todo-complete'] ) ) {
+    ?>
+      <ul>
+        <?php foreach ( $_SESSION['todo-complete'] as $todoItemComplete ) : ?>
+          <li>
+          <input type="checkbox" name="chkTask" id="chkTask"><?php echo $todoItemComplete; ?>
+          </li>
+        <?php endforeach; ?>
+      </ul>
+    <?php
+  
+  
   }
+}
+  
